@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Home-88739</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="coordinatessearch">Coordinates Search</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="airqualitysearch">Air Quality Search</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="weathersearch">Weather Search</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+</body>
+<div class="container">
+    <div class="row" style="margin-top: 20px">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"><h3 style="color: forestgreen" id="weatherName">Weather</h3></div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row" style="margin-top: 20px">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"><input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="placeName" style="width: 50%"></div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row" style="margin-top: 20px">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"><button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="searchUser()" id="searchButton">Search</button></div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row" style="margin-top: 20px">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"><div id="output"></div></div>
+        <div class="col-md-4"></div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    window.onload = function() {
+        function fetchData(placeName) {
+            fetch('http://localhost:8080/weather/' + placeName)
+                .then((res) => res.json())
+                .then((data) => {
+                    let output = `
+                        <ul class="list-group mb-3" id="listaWeather">
+                          <li class="list-group-item" id="placeWeather">Place: ${data.place}</li>
+                          <li class="list-group-item" id="weatherText">Weather: ${data.weather_text}</li>
+                          <li class="list-group-item" id="tempVal">Temperature: ${data.tempVal}</li>
+                          <li class="list-group-item" id="tempUnits">Temperature units: ${data.tempUnits}</li>
+                          <li class="list-group-item" id="humidity">Humidity: ${data.relative_humidity}</li>
+                        </ul>
+                      `
+                    document.getElementById('output').innerHTML = output;
+                })
+                .catch((err) => console.log((err)));
+        }
+
+        document.getElementById("searchButton").onclick = function () {
+            var placeName = document.getElementById("placeName").value;
+            fetchData(placeName);
+        };
+    }
+</script>
+</html>
