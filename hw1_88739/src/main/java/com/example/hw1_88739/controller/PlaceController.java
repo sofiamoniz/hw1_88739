@@ -28,7 +28,7 @@ public class PlaceController {
     //https://api.opencagedata.com/geocode/v1/json?q=Viseu&key=78ff705db7084e11a44cf27de9d2bd4e
     String coordApiKey = "78ff705db7084e11a44cf27de9d2bd4e";
 
-    String breezoApiKey = "dc816b5f80864062a7a183e9c1e97031";
+    String breezoApiKey = "ddef08e638fa4ec298309afb27d68125"; //valido ate 27 de abril
 
     String language = "&language=en&pretty=1";
     String key = "&key=";
