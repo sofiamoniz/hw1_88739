@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class CacheTest {
     @Test
     public void testAssertMap() throws InterruptedException {
-
+        Cache.cacheMap.clear(); //garantir que a cache está vazia para testes corretos
         HashMap<String, Object> cacheMapExpected = new HashMap<>(); //hashmap que servirá como termo de comparação
 
         Coordinate viseuCoor = new Coordinate("Viseu,Portugal",40.6652423, -7.9161281);

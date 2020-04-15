@@ -133,7 +133,7 @@ public class PlaceController {
             }
             else{
                 returnVal= httpRequest(airQualUrl);
-                if (returnVal != ""){
+                if (!returnVal.equals("")){
                     JSONParser parse = new JSONParser();
                     JSONObject jobj = (JSONObject)parse.parse(returnVal);
                     JSONObject jsonarr_1 = (JSONObject) jobj.get("data");

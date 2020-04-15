@@ -66,9 +66,9 @@ public class ChinaTest {
         myDynamicElement = (new WebDriverWait(driver, 20))
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("longitude")));
         driver.findElement(By.id("latitude")).click();
-        assertThat(driver.findElement(By.id("latitude")).getText(), is("Latitude: -6.8036448"));
+        assertThat(driver.findElement(By.id("latitude")).getText(), is("Latitude: -6.8036629"));
         driver.findElement(By.id("longitude")).click();
-        assertThat(driver.findElement(By.id("longitude")).getText(), is("Longitude: 39.238801"));
+        assertThat(driver.findElement(By.id("longitude")).getText(), is("Longitude: 39.2417797"));
         driver.findElement(By.linkText("Air Quality Search")).click();
         driver.findElement(By.id("airqualityname")).click();
         assertThat(driver.findElement(By.id("airqualityname")).getText(), is("Air Quality"));
